@@ -1,8 +1,9 @@
 package util;
 
+
 public class Math {
 	
-	public static enum OPERATOR { NOOP, PLUS, MINUS, DIVIDE, MULTIPLY, SQR };
+	public static enum OPERATOR { NOOP, PLUS, MINUS, DIVIDE, MULTIPLY, SQR, SQRy };
 	public static double calculateIt(double arg1, OPERATOR mathOp, double arg2) {
 		
 		double calcAnswer;		
@@ -21,8 +22,10 @@ public class Math {
 	            calcAnswer = arg1 * arg2;
 	            break;
 			case SQR:
-				//calcAnswer = pow(arg1, 2);
-
+				calcAnswer = java.lang.Math.pow(arg1, 2);
+				break;
+			case SQRy:
+				calcAnswer = java.lang.Math.pow(arg1, arg2);
 	        case NOOP:
 	        default:	
 	            calcAnswer = arg1;

@@ -98,7 +98,7 @@ public class CalculatorUI extends JFrame {
 		setBounds(100, 100, 418, 315);
 		getContentPane().setLayout(null);
 		calcArea.setForeground(Color.WHITE);
-		calcArea.setFont(new Font("Lucida Grande", Font.PLAIN, 72));
+		calcArea.setFont(new Font("Roboto", Font.PLAIN, 72));
 		calcArea.setHorizontalAlignment(SwingConstants.RIGHT);
 		calcArea.setBounds(18, 6, 377, 67);
 		getContentPane().add(calcArea);
@@ -119,7 +119,7 @@ public class CalculatorUI extends JFrame {
 		button_1.setForeground(Color.WHITE);
 		button_1.setBackground(Color.PINK);
 		button_1.addActionListener(e -> updateCalcArea(button_1.getText()));
-		button_1.setBounds(35, 86, 75, 40); // size
+		button_1.setBounds(167, 192, 62, 50);
 		getContentPane().add(button_1);
 		
 		JButton button_2 = new JButton("2");
@@ -138,7 +138,7 @@ public class CalculatorUI extends JFrame {
 		button_2.setForeground(Color.WHITE);
 		button_2.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
 		button_2.setBackground(Color.PINK);
-		button_2.setBounds(122, 86, 75, 40);
+		button_2.setBounds(229, 192, 62, 50);
 		getContentPane().add(button_2);
 		
 		JButton button_3 = new JButton("3");
@@ -157,7 +157,7 @@ public class CalculatorUI extends JFrame {
 		button_3.setForeground(Color.WHITE);
 		button_3.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
 		button_3.setBackground(Color.PINK);
-		button_3.setBounds(209, 86, 75, 40);
+		button_3.setBounds(291, 192, 62, 50);
 		getContentPane().add(button_3);
 		
 		JButton button_4 = new JButton("4");
@@ -290,19 +290,62 @@ public class CalculatorUI extends JFrame {
 		button_0.setForeground(Color.WHITE);
 		button_0.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
 		button_0.setBackground(Color.PINK);
-		button_0.setBounds(122, 242, 75, 40);
+		button_0.setBounds(167, 242, 124, 50);
 		getContentPane().add(button_0);
-		
+
+		JButton button_divide = new JButton("÷");
+		button_divide.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_divide.setBackground(Color.WHITE);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_divide.setBackground(Color.PINK);
+			}
+		});
+		button_divide.addActionListener(e -> { //
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.PLUS);
+		});
+		button_divide.setOpaque(true);
+		button_divide.setForeground(Color.WHITE);
+		button_divide.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_divide.setBackground(Color.PINK);
+		button_divide.setBounds(353, 42, 62, 50);
+		getContentPane().add(button_divide);
+
+		JButton button_mult = new JButton("x");
+		button_mult.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_mult.setBackground(Color.WHITE);
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_mult.setBackground(Color.PINK);
+			}
+		});
+		button_mult.addActionListener(e -> { //
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.PLUS);
+		});
+		button_mult.setOpaque(true);
+		button_mult.setForeground(Color.WHITE);
+		button_mult.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_mult.setBackground(Color.PINK);
+		button_mult.setBounds(353, 92, 62, 50);
+		getContentPane().add(button_mult);
+
 		JButton button_plus = new JButton("+");
 		button_plus.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				button_plus.setBackground(Color.WHITE);
-				button_plus.setForeground(Color.BLACK);
 			}
 			
 			public void mouseReleased(MouseEvent e) {
-				button_plus.setBackground(Color.WHITE);
+				button_plus.setBackground(Color.PINK);
 			}
 		});
 		button_plus.addActionListener(e -> { //
@@ -311,9 +354,9 @@ public class CalculatorUI extends JFrame {
 		});
 		button_plus.setOpaque(true);
 		button_plus.setForeground(Color.WHITE);
-		button_plus.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
+		button_plus.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
 		button_plus.setBackground(Color.PINK);
-		button_plus.setBounds(327, 138, 75, 40);
+		button_plus.setBounds(353, 192, 62, 50);
 		getContentPane().add(button_plus);
 		
 		JButton button_minus = new JButton("-");
@@ -333,9 +376,9 @@ public class CalculatorUI extends JFrame {
 		});
 		button_minus.setOpaque(true);
 		button_minus.setForeground(Color.WHITE);
-		button_minus.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
+		button_minus.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
 		button_minus.setBackground(Color.PINK);
-		button_minus.setBounds(327, 190, 75, 40);
+		button_minus.setBounds(353, 142, 62, 50);
 		getContentPane().add(button_minus);
 		
 		JButton button_equals = new JButton("=");
@@ -355,9 +398,9 @@ public class CalculatorUI extends JFrame {
 		});
 		button_equals.setOpaque(true);
 		button_equals.setForeground(Color.WHITE);
-		button_equals.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
+		button_equals.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
 		button_equals.setBackground(Color.PINK);
-		button_equals.setBounds(327, 242, 75, 40);
+		button_equals.setBounds(353, 242, 62, 50);
 		getContentPane().add(button_equals);
 		
 		JButton button_clear = new JButton("AC");
@@ -376,7 +419,7 @@ public class CalculatorUI extends JFrame {
 		button_clear.setForeground(Color.BLACK);
 		button_clear.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
 		button_clear.setBackground(new Color(221, 160, 221));
-		button_clear.setBounds(327, 85, 75, 40);
+		button_clear.setBounds(167, 42, 62, 50);
 		getContentPane().add(button_clear);
 		
 		JLabel lblElliesCalculator = new JLabel("Sample Calculator -- design by Ellie");
