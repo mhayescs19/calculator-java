@@ -4,6 +4,7 @@ import util.Math.OPERATOR;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import javax.swing.border.StrokeBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -93,259 +94,296 @@ public class CalculatorUI extends JFrame {
 	 */
 	public CalculatorUI() { // constructor for main method, makes the buttons "alive"
 		// sets up the frame
-		getContentPane().setBackground(new Color(175, 238, 238));
+		getContentPane().setBackground(Color.decode("#4C4C4C"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 418, 315);
+		setBounds(100, 100, 418, 340); // -25
+		int offset = 25;
 		getContentPane().setLayout(null);
 		calcArea.setForeground(Color.WHITE);
-		calcArea.setFont(new Font("Roboto", Font.PLAIN, 72));
+		calcArea.setBackground(Color.BLACK);
+		calcArea.setFont(new Font("San Francisco", Font.PLAIN, 45));
 		calcArea.setHorizontalAlignment(SwingConstants.RIGHT);
-		calcArea.setBounds(18, 6, 377, 67);
+		calcArea.setBounds(18, 0, 377, 67);
 		getContentPane().add(calcArea);
 		
 		JButton button_1 = new JButton("1"); // text displayed on button
 		button_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_1.setBackground(Color.PINK);
+				button_1.setBackground(Color.decode("#9E9E9E"));
 			} // change color to get an interaction
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				button_1.setBackground(Color.PINK);
+				button_1.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_1.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
+		button_1.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
 		button_1.setOpaque(true);
 		button_1.setForeground(Color.WHITE);
-		button_1.setBackground(Color.PINK);
+		button_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_1.setBackground(Color.decode("#B4B4B4"));
 		button_1.addActionListener(e -> updateCalcArea(button_1.getText()));
-		button_1.setBounds(167, 192, 62, 50);
+		button_1.setBounds(167, 192 + offset, 62, 50);
 		getContentPane().add(button_1);
 		
 		JButton button_2 = new JButton("2");
 		button_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_2.setBackground(Color.PINK);
+				button_2.setBackground(Color.decode("#9E9E9E"));
 			}
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				button_2.setBackground(Color.PINK);
+				button_2.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_2.addActionListener(e -> updateCalcArea(button_2.getText()));
 		button_2.setOpaque(true);
 		button_2.setForeground(Color.WHITE);
-		button_2.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_2.setBackground(Color.PINK);
-		button_2.setBounds(229, 192, 62, 50);
+		button_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_2.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_2.setBackground(Color.decode("#B4B4B4"));
+		button_2.setBounds(229, 192 + offset, 62, 50);
 		getContentPane().add(button_2);
 		
 		JButton button_3 = new JButton("3");
 		button_3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_3.setBackground(Color.PINK);
+				button_3.setBackground(Color.decode("#9E9E9E"));
 			}
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				button_3.setBackground(Color.PINK);
+				button_3.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_3.addActionListener(e -> updateCalcArea(button_3.getText()));
 		button_3.setOpaque(true);
 		button_3.setForeground(Color.WHITE);
-		button_3.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_3.setBackground(Color.PINK);
-		button_3.setBounds(291, 192, 62, 50);
+		button_3.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_3.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_3.setBackground(Color.decode("#B4B4B4"));
+		button_3.setBounds(291, 192 + offset, 62, 50);
 		getContentPane().add(button_3);
 		
 		JButton button_4 = new JButton("4");
 		button_4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_4.setBackground(Color.PINK);
+				button_4.setBackground(Color.decode("#9E9E9E"));
 			}
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				button_4.setBackground(Color.PINK);
+				button_4.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_4.addActionListener(e -> updateCalcArea(button_4.getText()));
 		button_4.setOpaque(true);
 		button_4.setForeground(Color.WHITE);
-		button_4.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_4.setBackground(Color.PINK);
-		button_4.setBounds(35, 138, 75, 40);
+		button_4.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_4.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_4.setBackground(Color.decode("#B4B4B4"));
+		button_4.setBounds(167, 142 + offset, 62, 50);
 		getContentPane().add(button_4);
 		
 		JButton button_5 = new JButton("5");
 		button_5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_5.setBackground(Color.PINK);
+				button_5.setBackground(Color.decode("#9E9E9E"));
 			}
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				button_5.setBackground(Color.PINK);
+				button_5.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_5.addActionListener(e -> updateCalcArea(button_5.getText()));
 		button_5.setOpaque(true);
 		button_5.setForeground(Color.WHITE);
-		button_5.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_5.setBackground(Color.PINK);
-		button_5.setBounds(122, 138, 75, 40);
+		button_5.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_5.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_5.setBackground(Color.decode("#B4B4B4"));
+		button_5.setBounds(229, 142 + offset, 62, 50);
 		getContentPane().add(button_5);
 		
 		JButton button_6 = new JButton("6");
 		button_6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_6.setBackground(Color.PINK);
+				button_6.setBackground(Color.decode("#9E9E9E"));
 			}
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				button_6.setBackground(Color.PINK);
+				button_6.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_6.addActionListener(e -> updateCalcArea(button_6.getText()));
 		button_6.setOpaque(true);
 		button_6.setForeground(Color.WHITE);
-		button_6.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_6.setBackground(Color.PINK);
-		button_6.setBounds(209, 138, 75, 40);
+		button_6.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_6.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_6.setBackground(Color.decode("#B4B4B4"));
+		button_6.setBounds(291, 142 + offset, 62, 50);
 		getContentPane().add(button_6);
 		
 		JButton button_7 = new JButton("7");
 		button_7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_7.setBackground(Color.PINK);
+				button_7.setBackground(Color.decode("#9E9E9E"));
 			}
 			
 			public void mouseReleased(MouseEvent e) {
-				button_7.setBackground(Color.PINK);
+				button_7.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_7.addActionListener(e -> updateCalcArea(button_7.getText()));
 		button_7.setOpaque(true);
 		button_7.setForeground(Color.WHITE);
-		button_7.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_7.setBackground(Color.PINK);
-		button_7.setBounds(35, 190, 75, 40);
+		button_7.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_7.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_7.setBackground(Color.decode("#B4B4B4"));
+		button_7.setBounds(167, 92 + offset, 62, 50);
 		getContentPane().add(button_7);
 		
 		JButton button_8 = new JButton("8");
 		button_8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_8.setBackground(Color.PINK);
+				button_8.setBackground(Color.decode("#9E9E9E"));
 			}
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				button_8.setBackground(Color.PINK);
+				button_8.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_8.addActionListener(e -> updateCalcArea(button_8.getText()));
 		button_8.setOpaque(true);
 		button_8.setForeground(Color.WHITE);
-		button_8.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_8.setBackground(Color.PINK);
-		button_8.setBounds(122, 190, 75, 40);
+		button_8.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_8.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_8.setBackground(Color.decode("#B4B4B4"));
+		button_8.setBounds(229, 92 + offset, 62, 50);
 		getContentPane().add(button_8);
 		
 		JButton button_9 = new JButton("9");
 		button_9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_9.setBackground(Color.PINK);
+				button_9.setBackground(Color.decode("#9E9E9E"));
 			}
 			
 			public void mouseReleased(MouseEvent e) {
-				button_9.setBackground(Color.PINK);
+				button_9.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_9.addActionListener(e -> updateCalcArea(button_9.getText()));
 		button_9.setOpaque(true);
 		button_9.setForeground(Color.WHITE);
-		button_9.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_9.setBackground(Color.PINK);
-		button_9.setBounds(209, 190, 75, 40);
+		button_9.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_9.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_9.setBackground(Color.decode("#B4B4B4"));
+		button_9.setBounds(291, 92 + offset, 62, 50);
 		getContentPane().add(button_9);
 		
 		JButton button_0 = new JButton("0");
 		button_0.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_0.setBackground(Color.PINK);
+				button_0.setBackground(Color.decode("#9E9E9E"));
 			}
 			
 			public void mouseReleased(MouseEvent e) {
-				button_0.setBackground(Color.PINK);
+				button_0.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
 		button_0.addActionListener(e -> updateCalcArea(button_0.getText()));
 		button_0.setOpaque(true);
 		button_0.setForeground(Color.WHITE);
-		button_0.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_0.setBackground(Color.PINK);
-		button_0.setBounds(167, 242, 124, 50);
+		button_0.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_0.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_0.setBackground(Color.decode("#B4B4B4"));
+		button_0.setBounds(167, 242 + offset, 124, 50);
 		getContentPane().add(button_0);
 
 		JButton button_divide = new JButton("÷");
 		button_divide.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_divide.setBackground(Color.WHITE);
+				button_divide.setBackground(Color.decode("#E8AC2D"));
 			}
 
 			public void mouseReleased(MouseEvent e) {
-				button_divide.setBackground(Color.PINK);
+				button_divide.setBackground(Color.decode("#FFBD33"));
 			}
 		});
 		button_divide.addActionListener(e -> { //
 			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.PLUS);
+			saveValueOfMathOp(OPERATOR.DIVIDE);
 		});
 		button_divide.setOpaque(true);
 		button_divide.setForeground(Color.WHITE);
+		button_divide.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_divide.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
-		button_divide.setBackground(Color.PINK);
-		button_divide.setBounds(353, 42, 62, 50);
+		button_divide.setBackground(Color.decode("#FFBD33"));
+		button_divide.setBounds(353, 42 + offset, 62, 50);
 		getContentPane().add(button_divide);
 
 		JButton button_mult = new JButton("x");
 		button_mult.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_mult.setBackground(Color.WHITE);
+				button_mult.setBackground(Color.decode("#E8AC2D"));
 			}
 
 			public void mouseReleased(MouseEvent e) {
-				button_mult.setBackground(Color.PINK);
+				button_mult.setBackground(Color.decode("#FFBD33"));
 			}
 		});
 		button_mult.addActionListener(e -> { //
 			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.PLUS);
+			saveValueOfMathOp(OPERATOR.MULTIPLY);
 		});
 		button_mult.setOpaque(true);
 		button_mult.setForeground(Color.WHITE);
+		button_mult.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_mult.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
-		button_mult.setBackground(Color.PINK);
-		button_mult.setBounds(353, 92, 62, 50);
+		button_mult.setBackground(Color.decode("#FFBD33"));
+		button_mult.setBounds(353, 92 + offset, 62, 50);
 		getContentPane().add(button_mult);
+
+		JButton button_decimal = new JButton(".");
+		button_decimal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_decimal.setBackground(Color.decode("#9E9E9E"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_decimal.setBackground(Color.decode("#B4B4B4"));
+			}
+		});
+		button_decimal.addActionListener(e -> { //
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.PLUS);
+		});
+		button_decimal.setOpaque(true);
+		button_decimal.setForeground(Color.WHITE);
+		button_decimal.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_decimal.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_decimal.setBackground(Color.decode("#B4B4B4"));
+		button_decimal.setBounds(291, 242 + offset, 62, 50);
+		getContentPane().add(button_decimal);
 
 		JButton button_plus = new JButton("+");
 		button_plus.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_plus.setBackground(Color.WHITE);
+				button_plus.setBackground(Color.decode("#E8AC2D"));
 			}
 			
 			public void mouseReleased(MouseEvent e) {
-				button_plus.setBackground(Color.PINK);
+				button_plus.setBackground(Color.decode("#FFBD33"));
 			}
 		});
 		button_plus.addActionListener(e -> { //
@@ -354,20 +392,21 @@ public class CalculatorUI extends JFrame {
 		});
 		button_plus.setOpaque(true);
 		button_plus.setForeground(Color.WHITE);
+		button_plus.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_plus.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
-		button_plus.setBackground(Color.PINK);
-		button_plus.setBounds(353, 192, 62, 50);
+		button_plus.setBackground(Color.decode("#FFBD33"));
+		button_plus.setBounds(353, 192 + offset, 62, 50);
 		getContentPane().add(button_plus);
 		
 		JButton button_minus = new JButton("-");
 		button_minus.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_minus.setBackground(Color.WHITE);
+				button_minus.setBackground(Color.decode("#E8AC2D"));
 			}
 			
 			public void mouseReleased(MouseEvent e) {
-				button_minus.setBackground(Color.PINK);
+				button_minus.setBackground(Color.decode("#FFBD33"));
 			}
 		});
 		button_minus.addActionListener(e -> {
@@ -376,20 +415,22 @@ public class CalculatorUI extends JFrame {
 		});
 		button_minus.setOpaque(true);
 		button_minus.setForeground(Color.WHITE);
+		button_minus.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_minus.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
-		button_minus.setBackground(Color.PINK);
-		button_minus.setBounds(353, 142, 62, 50);
+		button_minus.setBackground(Color.decode("#FFBD33"));
+		button_minus.setBounds(353, 142 + offset, 62, 50);
 		getContentPane().add(button_minus);
-		
+
+
 		JButton button_equals = new JButton("=");
 		button_equals.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_equals.setBackground(Color.WHITE);
+				button_equals.setBackground(Color.decode("#E8AC2D"));
 			}
 			
 			public void mouseReleased(MouseEvent e) {
-				button_equals.setBackground(Color.PINK);
+				button_equals.setBackground(Color.decode("#FFBD33"));
 			}
 		});
 		button_equals.addActionListener(e -> {
@@ -398,33 +439,38 @@ public class CalculatorUI extends JFrame {
 		});
 		button_equals.setOpaque(true);
 		button_equals.setForeground(Color.WHITE);
+		button_equals.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_equals.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
-		button_equals.setBackground(Color.PINK);
-		button_equals.setBounds(353, 242, 62, 50);
+		button_equals.setBackground(Color.decode("#FFBD33"));
+		button_equals.setBounds(353, 242 + offset, 62, 50);
 		getContentPane().add(button_equals);
 		
 		JButton button_clear = new JButton("AC");
 		button_clear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				button_clear.setBackground(Color.PINK);
+				button_clear.setBackground(Color.decode("#878787"));
 			}
 			
 			public void mouseReleased(MouseEvent e) {
-				button_clear.setBackground(Color.PINK);
+				button_clear.setBackground(Color.decode("#787777"));
 			}
 		});
 		button_clear.addActionListener(e -> clearCalculator());
 		button_clear.setOpaque(true);
-		button_clear.setForeground(Color.BLACK);
-		button_clear.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
-		button_clear.setBackground(new Color(221, 160, 221));
-		button_clear.setBounds(167, 42, 62, 50);
+		button_clear.setForeground(Color.WHITE);
+		button_clear.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_clear.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_clear.setBackground(Color.decode("#787777"));
+		button_clear.setBounds(167, 42 + offset, 62, 50);
 		getContentPane().add(button_clear);
 		
-		JLabel lblElliesCalculator = new JLabel("Sample Calculator -- design by Ellie");
-		lblElliesCalculator.setBounds(6, 6, 134, 16);
-		getContentPane().add(lblElliesCalculator);
+		JLabel label_title = new JLabel("PEGG, HAYES");
+		label_title.setBounds(6, 6, 134, 16);
+		label_title.setFont(new Font("Trebuchet MS", Font.PLAIN, 10));
+		label_title.setForeground(Color.WHITE);
+
+		getContentPane().add(label_title);
 
 	}
 }
