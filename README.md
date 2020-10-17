@@ -4,7 +4,7 @@
 * multiply/divide
 * square
 * power
-* log/ log based x to the y
+* log/ log<sub>x</sub>y
 * switch sign
 * square root
 * n<sup>th</sup> root
