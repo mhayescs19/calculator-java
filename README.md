@@ -1,6 +1,6 @@
 # PEGG HAYES Calculator
 ## Current GUI
-<iframe src="https://drive.google.com/file/d/1XUSv9tn9xTvpOL3o4PyOd7G_Bec1p_MA/preview" width="640" height="480"></iframe>
+<a href="https://drive.google.com/file/d/1XUSv9tn9xTvpOL3o4PyOd7G_Bec1p_MA/preview">Image</a>
 ## Operations
 * add/subtract
 * multiply/divide
