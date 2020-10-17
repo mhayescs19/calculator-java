@@ -5,7 +5,7 @@ import static java.lang.Math.*;
 
 public class Operation {
 	
-	public static enum OPERATOR { NOOP, PLUS, MINUS, DIVIDE, MULTIPLY , LOGy, LOG, POWERy , ACOSIN,ASIN,SQ,SQRT,SQRTy}
+	public static enum OPERATOR { NOOP, PLUS, MINUS, DIVIDE, MULTIPLY, LOGy, LOG, POWERy, ACOSIN, ASIN, SQ, SQRT, SQRTy,POSNEG, FRACTION}
 	public static double calculateIt(double arg1, OPERATOR mathOp, double arg2) {
 		
 		double calcAnswer;		
@@ -24,7 +24,7 @@ public class Operation {
 	            calcAnswer = arg1 * arg2;
 	            break;
 			case LOGy:
-				calcAnswer = log(arg1) / log(arg2);
+				calcAnswer = log(arg2) / log(arg1);
 				break;
 			case LOG:
 				calcAnswer = log10(arg1);
@@ -52,7 +52,7 @@ public class Operation {
 				calcAnswer = asin(arg1/arg2);
 				break;
 			case POWERy:calcAnswer = pow(arg1,arg2);
-			break;
+				break;
 			case SQ:
 				calcAnswer = pow(arg1,2);
 				break;
@@ -60,7 +60,13 @@ public class Operation {
 				calcAnswer = sqrt(arg1);
 				break;
 			case SQRTy:
-				calcAnswer = pow(arg1,1.0/arg2);
+				calcAnswer = pow(arg2,1.0/arg1);
+				break;
+			case POSNEG:
+				calcAnswer = -1 * arg1;
+				break;
+			case FRACTION:
+				calcAnswer = 1 / arg1;
 				break;
 	        case NOOP:
 	        default:	

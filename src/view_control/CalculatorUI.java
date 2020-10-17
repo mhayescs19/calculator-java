@@ -1,6 +1,7 @@
 package view_control;
 
-import util.Math.OPERATOR;
+import util.Operation.OPERATOR;
+import util.Operation;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -8,6 +9,9 @@ import javax.swing.border.StrokeBorder;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.font.TextAttribute;
+import java.text.AttributedCharacterIterator;
+import java.text.AttributedString;
 
 public class CalculatorUI extends JFrame {
 	private final JLabel calcArea = new JLabel("");
@@ -18,7 +22,7 @@ public class CalculatorUI extends JFrame {
 	private STATE mathState;
 	
 	// calculator values
-    private OPERATOR mathOp;
+    private Operation.OPERATOR mathOp;
 	private double arg1;
     private double arg2;
     private double calcAnswer;
@@ -38,11 +42,16 @@ public class CalculatorUI extends JFrame {
 	
 	private void calculateAnswer()  // method to perform calculation
 	{
-	    calcAnswer = util.Math.calculateIt(arg1, mathOp, arg2);
+	    calcAnswer = util.Operation.calculateIt(arg1, mathOp, arg2);
 		calcArea.setText(String.valueOf(calcAnswer));
 	    arg1 = Double.parseDouble(calcArea.getText());
 	    mathState = STATE.CALC;
 		initialCalcAreaInputState = true;
+	}
+
+	private void oneOpHelper() {
+		arg2 = 0;
+		calculateAnswer();
 	}
 	
 	private void updateCalcArea(String string) {
@@ -364,8 +373,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_decimal.addActionListener(e -> { //
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.PLUS);
+			updateCalcArea(".");
 		});
 		button_decimal.setOpaque(true);
 		button_decimal.setForeground(Color.WHITE);
@@ -421,6 +429,146 @@ public class CalculatorUI extends JFrame {
 		button_minus.setBounds(353, 142 + offset, 62, 50);
 		getContentPane().add(button_minus);
 
+		JButton button_LOG = new JButton("log");
+		button_LOG.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_LOG.setBackground(Color.decode("#E8AC2D"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_LOG.setBackground(Color.decode("#FFBD33"));
+			}
+		});
+		button_LOG.addActionListener(e -> { //
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.LOG);
+			oneOpHelper();
+		});
+		button_LOG.setOpaque(true);
+		button_LOG.setForeground(Color.WHITE);
+		button_LOG.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_LOG.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_LOG.setBackground(Color.decode("#FFBD33"));
+		button_LOG.setBounds(105, 92 + offset, 62, 50);
+		getContentPane().add(button_LOG);
+
+		JButton button_square = new JButton("<html>x<small style='font-size: 15px';><sup>2</sup></small></html>");
+		button_square.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_square.setBackground(Color.decode("#E8AC2D"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_square.setBackground(Color.decode("#FFBD33"));
+			}
+		});
+		button_square.addActionListener(e -> { //
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.SQ);
+			oneOpHelper();
+		});
+		button_square.setOpaque(true);
+		button_square.setForeground(Color.WHITE);
+		button_square.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_square.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_square.setBackground(Color.decode("#FFBD33"));
+		button_square.setBounds(43, 92 + offset, 62, 50);
+		getContentPane().add(button_square);
+
+		JButton button_powerY = new JButton("<html>x<small style='font-size: 15px';><sup>y</sup></small></html>");
+		button_powerY.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_powerY.setBackground(Color.decode("#E8AC2D"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_powerY.setBackground(Color.decode("#FFBD33"));
+			}
+		});
+		button_powerY.addActionListener(e -> { //
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.POWERy);
+		});
+		button_powerY.setOpaque(true);
+		button_powerY.setForeground(Color.WHITE);
+		button_powerY.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_powerY.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_powerY.setBackground(Color.decode("#FFBD33"));
+		button_powerY.setBounds(43, 142 + offset, 62, 50);
+		getContentPane().add(button_powerY);
+
+		JButton button_SQRTy = new JButton("<html><small style='font-size: 15px';><sup>x</sup></small>√y</html>"); // HTML code for subscript
+		button_SQRTy.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_SQRTy.setBackground(Color.decode("#E8AC2D"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_SQRTy.setBackground(Color.decode("#FFBD33"));
+			}
+		});
+		button_SQRTy.addActionListener(e -> {
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.SQRTy);
+		});
+		button_SQRTy.setOpaque(true);
+		button_SQRTy.setForeground(Color.WHITE);
+		button_SQRTy.setFont(new Font("Trebuchet MS", Font.PLAIN, 23));
+		button_SQRTy.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_SQRTy.setBackground(Color.decode("#FFBD33"));
+		button_SQRTy.setBounds(105, 192 + offset, 62, 50);
+		getContentPane().add(button_SQRTy);
+
+		JButton button_SQRT = new JButton("√x"); // HTML code for subscript
+		button_SQRT.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_SQRTy.setBackground(Color.decode("#E8AC2D"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_SQRTy.setBackground(Color.decode("#FFBD33"));
+			}
+		});
+		button_SQRT.addActionListener(e -> {
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.SQRT);
+			oneOpHelper();
+		});
+		button_SQRT.setOpaque(true);
+		button_SQRT.setForeground(Color.WHITE);
+		button_SQRT.setFont(new Font("Trebuchet MS", Font.PLAIN, 23));
+		button_SQRT.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_SQRT.setBackground(Color.decode("#FFBD33"));
+		button_SQRT.setBounds(43, 192 + offset, 62, 50);
+		getContentPane().add(button_SQRT);
+
+		JButton button_LOGxY = new JButton("<html>log<small style='font-size: 13px';><sub>x</sub></small>y</html>"); // HTML code for subscript
+		button_LOGxY.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_LOGxY.setBackground(Color.decode("#E8AC2D"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_LOGxY.setBackground(Color.decode("#FFBD33"));
+			}
+		});
+		button_LOGxY.addActionListener(e -> {
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.LOGy);
+		});
+		button_LOGxY.setOpaque(true);
+		button_LOGxY.setForeground(Color.WHITE);
+		button_LOGxY.setFont(new Font("Trebuchet MS", Font.PLAIN, 23));
+		button_LOGxY.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_LOGxY.setBackground(Color.decode("#FFBD33"));
+		button_LOGxY.setBounds(105, 142 + offset, 62, 50);
+		getContentPane().add(button_LOGxY);
 
 		JButton button_equals = new JButton("=");
 		button_equals.addMouseListener(new MouseAdapter() {
@@ -464,10 +612,58 @@ public class CalculatorUI extends JFrame {
 		button_clear.setBackground(Color.decode("#787777"));
 		button_clear.setBounds(167, 42 + offset, 62, 50);
 		getContentPane().add(button_clear);
+
+		JButton button_posneg = new JButton("+/-");
+		button_posneg.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_posneg.setBackground(Color.decode("#878787"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_posneg.setBackground(Color.decode("#787777"));
+			}
+		});
+		button_posneg.addActionListener(e -> {
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.POSNEG);
+			oneOpHelper();
+		});
+		button_posneg.setOpaque(true);
+		button_posneg.setForeground(Color.WHITE);
+		button_posneg.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
+		button_posneg.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_posneg.setBackground(Color.decode("#787777"));
+		button_posneg.setBounds(229, 42 + offset, 62, 50);
+		getContentPane().add(button_posneg);
+
+		JButton button_fraction = new JButton("<html>1<p>━</p>x</html>");
+		button_fraction.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_fraction.setBackground(Color.decode("#878787"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_fraction.setBackground(Color.decode("#787777"));
+			}
+		});
+		button_fraction.addActionListener(e -> {
+			saveValueOfArg1();
+			saveValueOfMathOp(OPERATOR.FRACTION);
+			oneOpHelper();
+		});
+		button_fraction.setOpaque(true);
+		button_fraction.setForeground(Color.WHITE);
+		button_fraction.setFont(new Font("Trebuchet MS", Font.PLAIN, 10));
+		button_fraction.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_fraction.setBackground(Color.decode("#787777"));
+		button_fraction.setBounds(291, 42 + offset, 62, 50);
+		getContentPane().add(button_fraction);
 		
 		JLabel label_title = new JLabel("PEGG, HAYES");
 		label_title.setBounds(6, 6, 134, 16);
-		label_title.setFont(new Font("Trebuchet MS", Font.PLAIN, 10));
+		label_title.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		label_title.setForeground(Color.WHITE);
 
 		getContentPane().add(label_title);
