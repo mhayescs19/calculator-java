@@ -1,7 +1,7 @@
 # PEGG HAYES Calculator
 ## Current GUI
-![](https://drive.google.com/file/d/1XUSv9tn9xTvpOL3o4PyOd7G_Bec1p_MA/preview?raw=true)
-
+<img src="https://drive.google.com/file/d/1XUSv9tn9xTvpOL3o4PyOd7G_Bec1p_MA/preview"
+     alt="Picture of Calculator"/>
 ## Operations
 * add/subtract
 * multiply/divide
