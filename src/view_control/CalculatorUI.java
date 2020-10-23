@@ -1,5 +1,6 @@
 package view_control;
 
+import control_calculator.Calculate;
 import util.Operation.OPERATOR;
 import util.Operation;
 
@@ -15,6 +16,8 @@ import java.text.AttributedString;
 
 public class CalculatorUI extends JFrame {
 	private final JLabel calcArea = new JLabel("");
+	private Calculate control = new Calculate();
+
 
 	private boolean initialCalcAreaInputState;
 	private enum STATE { INITIAL, SAVE1, SAVE2, CALC } // defines the structure of what the STATE enum is
@@ -98,6 +101,10 @@ public class CalculatorUI extends JFrame {
 		calcAnswer = 0.0;
 	}
 
+	public void displayCalcArea() {
+		String currentNumbers = control.displayCalcArea();
+		calcArea.setText(currentNumbers);
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -131,7 +138,11 @@ public class CalculatorUI extends JFrame {
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_1.setBackground(Color.decode("#B4B4B4"));
-		button_1.addActionListener(e -> updateCalcArea(button_1.getText()));
+		button_1.addActionListener(e -> {
+			control.getCalcArea(button_1.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_1.setBounds(167, 192 + offset, 62, 50);
 		getContentPane().add(button_1);
 		
