@@ -14,6 +14,12 @@ import java.awt.font.TextAttribute;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
+/**
+ * IMPORTANT COMMENT DIRECTORY
+ * line 75
+ * line 307
+ * line 432
+ */
 public class CalculatorUI extends JFrame {
 	private final JLabel calcArea = new JLabel("");
 	private Calculate control = new Calculate();
@@ -27,7 +33,9 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 	}
-
+	/**
+	  Helper method to display current calculation area from control object (of Calculate class)
+	 */
 	public void displayCalcArea() {
 		String currentNumbers = control.getCalcArea();
 		calcArea.setText(currentNumbers);
@@ -66,6 +74,12 @@ public class CalculatorUI extends JFrame {
 		button_1.setForeground(Color.WHITE);
 		button_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_1.setBackground(Color.decode("#B4B4B4"));
+		/**
+		 * CONTROL!!! For Integer Buttons 0-9
+		 * Inside of action listener...
+		 * 1. similar update to calcArea, this time inside of control object, passing value of button
+		 * 2. displayCalcArea helper method does is a getter from control object to retrieve mutated calcArea AND displays retrieved value in UI
+		 */
 		button_1.addActionListener(e -> {
 			control.updateCalcArea(button_1.getText());
 			displayCalcArea();
@@ -291,6 +305,12 @@ public class CalculatorUI extends JFrame {
 				button_divide.setBackground(Color.decode("#FFBD33"));
 			}
 		});
+		/**
+		 * CONTROL!!! Two Argument Buttons - add/subtract, mult/divide, logxy, sqrtxy, powery
+		 * 1. setter of calcArea in UI to calcArea of control object
+		 * 2. normal saveArg1, using calcArea from control object, not directly from UI
+		 * 3. normal saveMathOp
+		 */
 		button_divide.addActionListener(e -> { //
 			control.setCalcArea(calcArea.getText());
 			control.saveValueOfArg1();
@@ -410,6 +430,14 @@ public class CalculatorUI extends JFrame {
 				button_LOG.setBackground(Color.decode("#FFBD33"));
 			}
 		});
+		/**
+		 * CONTROL!!! One Argument Buttons - square, log, pos/neg, fractionize
+		 * 1. setter of calcArea in UI to calcArea of control object
+		 * 2. normal saveArg1, again using calcArea stored in control object
+		 * 3. normal saveOp
+		 * 4. normal one operation helper, mutates calcArea with answer inside of control
+		 * 5. helper method to instantly set UI calcArea from value calculated in control object
+		 */
 		button_LOG.addActionListener(e -> { //
 			control.setCalcArea(calcArea.getText());
 			control.saveValueOfArg1();
