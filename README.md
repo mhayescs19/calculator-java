@@ -14,3 +14,5 @@
 * switch sign
 * square root
 * n<sup>th</sup> root
+## Individual Code Blocks
+<a href="https://github.com/mhayescs19/pegg-hayes-calculator-p1-dataminers/blob/master/src/view_control/CalculatorConsole.java">Pegg</a>

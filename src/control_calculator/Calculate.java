@@ -55,8 +55,19 @@ public class Calculate {
             calcArea = input;
             initialCalcAreaInputState = false;
         } else  {
-            calcArea = input + calcArea;
+            calcArea = calcArea + input;
         }
+    }
+
+    public void clearCalculator() {  // helper method to clear and update calculator to default
+        // calculator control
+        String calcAreaDefault = "0.0";
+        calcArea = calcAreaDefault;
+        mathState = Calculate.STATE.INITIAL;
+        initialCalcAreaInputState = true;
+        arg1 = 0.0;
+        arg2 = 0.0;
+        calcAnswer = 0.0;
     }
     /**
      * Save values for Calculator.

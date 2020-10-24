@@ -17,21 +17,6 @@ import java.text.AttributedString;
 public class CalculatorUI extends JFrame {
 	private final JLabel calcArea = new JLabel("");
 	private Calculate control = new Calculate();
-
-
-	private boolean initialCalcAreaInputState;
-	private enum STATE { INITIAL, SAVE1, SAVE2, CALC } // defines the structure of what the STATE enum is
-
-	private STATE mathState;
-	
-	// calculator values
-    private Operation.OPERATOR mathOp;
-	private double arg1;
-    private double arg2;
-    private double calcAnswer;
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
 			try {
@@ -41,66 +26,6 @@ public class CalculatorUI extends JFrame {
 				e.printStackTrace();
 			}
 		});
-	}
-	
-	private void calculateAnswer()  // method to perform calculation
-	{
-	    calcAnswer = util.Operation.calculateIt(arg1, mathOp, arg2);
-		calcArea.setText(String.valueOf(calcAnswer));
-	    arg1 = Double.parseDouble(calcArea.getText());
-	    mathState = STATE.CALC;
-		initialCalcAreaInputState = true;
-	}
-
-	private void oneOpHelper() {
-		arg2 = 0;
-		calculateAnswer();
-	}
-	
-	private void updateCalcArea(String input) {
-		if (control.initialCalcAreaInputState) {  // sets text to string on initial key typed
-			calcArea.setText(input);
-			initialCalcAreaInputState = false;
-	    } else  {                         // concatenates string to end of text subsequent keys typed
-			calcArea.setText(calcArea.getText() + input);
-	    }
-	}
-	
-	/**
-	 * Save values for Calculator.
-	 */
-	private void saveValueOfArg1() { // method to store 1st value in calculation (arg1)
-	    arg1 = Double.parseDouble((calcArea.getText()));
-	    mathState = STATE.SAVE1;
-		initialCalcAreaInputState = true;
-	}
-	
-	private void saveValueOfArg2() { // method to store 2nd value in calculation (arg2)
-		if (mathState != STATE.CALC) {
-			arg2 = Double.parseDouble((calcArea.getText()));
-			mathState = STATE.SAVE2;
-		}
-	}
-	
-	private void saveValueOfMathOp(OPERATOR op) { // method to store operator
-		mathOp = op;
-	}
-
-	private void oneArgCalculate() {
-		calculateAnswer();
-	}
-	
-	private void clearCalculator() {  // helper method to clear and update calculator to default
-		// calculator control
-		String calcAreaDefault = "0.0";
-		calcArea.setText(calcAreaDefault);
-		control.setCalcArea(calcAreaDefault);
-		mathState = STATE.INITIAL;
-		initialCalcAreaInputState = true;
-		control.initialCalcAreaInputState = true;
-		arg1 = 0.0;
-		arg2 = 0.0;
-		calcAnswer = 0.0;
 	}
 
 	public void displayCalcArea() {
@@ -160,8 +85,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_2.addActionListener(e -> {
-			control.setCalcArea(button_2.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_2.getText());
 			displayCalcArea();
 		});
 		button_2.setOpaque(true);
@@ -184,8 +108,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_3.addActionListener(e -> {
-			control.setCalcArea(button_3.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_3.getText());
 			displayCalcArea();
 		});
 		button_3.setOpaque(true);
@@ -208,8 +131,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_4.addActionListener(e -> {
-			control.setCalcArea(button_4.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_4.getText());
 			displayCalcArea();
 		});
 		button_4.setOpaque(true);
@@ -232,8 +154,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_5.addActionListener(e -> {
-			control.setCalcArea(button_5.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_5.getText());
 			displayCalcArea();
 		});
 		button_5.setOpaque(true);
@@ -256,8 +177,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_6.addActionListener(e -> {
-			control.setCalcArea(button_6.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_6.getText());
 			displayCalcArea();
 		});
 		button_6.setOpaque(true);
@@ -280,8 +200,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_7.addActionListener(e -> {
-			control.setCalcArea(button_7.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_7.getText());
 			displayCalcArea();
 		});
 		button_7.setOpaque(true);
@@ -304,8 +223,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_8.addActionListener(e -> {
-			control.setCalcArea(button_8.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_8.getText());
 			displayCalcArea();
 		});
 		button_8.setOpaque(true);
@@ -328,8 +246,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_9.addActionListener(e -> {
-			control.setCalcArea(button_9.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_9.getText());
 			displayCalcArea();
 		});
 		button_9.setOpaque(true);
@@ -352,8 +269,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_0.addActionListener(e -> {
-			control.setCalcArea(button_0.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_0.getText());
 			displayCalcArea();
 		});
 		button_0.setOpaque(true);
@@ -376,6 +292,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_divide.addActionListener(e -> { //
+			control.setCalcArea(calcArea.getText());
 			control.saveValueOfArg1();
 			control.saveValueOfMathOp(OPERATOR.DIVIDE);
 		});
@@ -399,8 +316,9 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_mult.addActionListener(e -> { //
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.MULTIPLY);
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.MULTIPLY);
 		});
 		button_mult.setOpaque(true);
 		button_mult.setForeground(Color.WHITE);
@@ -423,6 +341,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_decimal.addActionListener(e -> { //
 			control.updateCalcArea(".");
+			displayCalcArea();
 		});
 		button_decimal.setOpaque(true);
 		button_decimal.setForeground(Color.WHITE);
@@ -444,8 +363,9 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_plus.addActionListener(e -> { //
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.PLUS);
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.PLUS);
 		});
 		button_plus.setOpaque(true);
 		button_plus.setForeground(Color.WHITE);
@@ -467,8 +387,9 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_minus.addActionListener(e -> {
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.MINUS);
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.MINUS);
 		});
 		button_minus.setOpaque(true);
 		button_minus.setForeground(Color.WHITE);
@@ -490,9 +411,11 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_LOG.addActionListener(e -> { //
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.LOG);
-			oneOpHelper();
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.LOG);
+			control.oneOpHelper();
+			displayCalcArea();
 		});
 		button_LOG.setOpaque(true);
 		button_LOG.setForeground(Color.WHITE);
@@ -514,9 +437,11 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_square.addActionListener(e -> { //
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.SQ);
-			oneOpHelper();
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.SQ);
+			control.oneOpHelper();
+			displayCalcArea();
 		});
 		button_square.setOpaque(true);
 		button_square.setForeground(Color.WHITE);
@@ -538,8 +463,8 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_powerY.addActionListener(e -> { //
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.POWERy);
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.POWERy);
 		});
 		button_powerY.setOpaque(true);
 		button_powerY.setForeground(Color.WHITE);
@@ -561,8 +486,9 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_SQRTy.addActionListener(e -> {
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.SQRTy);
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.SQRTy);
 		});
 		button_SQRTy.setOpaque(true);
 		button_SQRTy.setForeground(Color.WHITE);
@@ -584,9 +510,11 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_SQRT.addActionListener(e -> {
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.SQRT);
-			oneOpHelper();
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.SQRT);
+			control.oneOpHelper();
+			displayCalcArea();
 		});
 		button_SQRT.setOpaque(true);
 		button_SQRT.setForeground(Color.WHITE);
@@ -608,8 +536,9 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_LOGxY.addActionListener(e -> {
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.LOGy);
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.LOGy);
 		});
 		button_LOGxY.setOpaque(true);
 		button_LOGxY.setForeground(Color.WHITE);
@@ -631,8 +560,10 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_equals.addActionListener(e -> {
-			saveValueOfArg2();
-			calculateAnswer();
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg2();
+			control.calculateAnswer();
+			displayCalcArea();
 		});
 		button_equals.setOpaque(true);
 		button_equals.setForeground(Color.WHITE);
@@ -653,7 +584,10 @@ public class CalculatorUI extends JFrame {
 				button_clear.setBackground(Color.decode("#787777"));
 			}
 		});
-		button_clear.addActionListener(e -> clearCalculator());
+		button_clear.addActionListener(e -> {
+			control.clearCalculator();
+			displayCalcArea();
+		});
 		button_clear.setOpaque(true);
 		button_clear.setForeground(Color.WHITE);
 		button_clear.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -674,9 +608,11 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_posneg.addActionListener(e -> {
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.POSNEG);
-			oneOpHelper();
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.POSNEG);
+			control.oneOpHelper();
+			displayCalcArea();
 		});
 		button_posneg.setOpaque(true);
 		button_posneg.setForeground(Color.WHITE);
@@ -698,9 +634,11 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_fraction.addActionListener(e -> {
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.FRACTION);
-			oneOpHelper();
+			control.setCalcArea(calcArea.getText());
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.FRACTION);
+			control.oneOpHelper();
+			displayCalcArea();
 		});
 		button_fraction.setOpaque(true);
 		button_fraction.setForeground(Color.WHITE);
