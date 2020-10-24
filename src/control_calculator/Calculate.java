@@ -6,28 +6,29 @@ import view_control.CalculatorUI;
 
 public class Calculate {
 
-    private boolean initialCalcAreaInputState;
+    /*
+      Calculate Object Definitions
+     */
+    public boolean initialCalcAreaInputState;
     private enum STATE { INITIAL, SAVE1, SAVE2, CALC } // defines the structure of what the STATE enum is
 
     private STATE mathState;
 
-    // calculator values
     private Operation.OPERATOR mathOp;
     private double arg1;
     private double arg2;
     private double calcAnswer;
     private String calcArea;
 
-    public void getCalcArea(String currentDisplay) {
+    public void setCalcArea(String currentDisplay) { // due to MVC, method grabs value from calculator view (might be not entirely control)
         calcArea = currentDisplay;
     }
 
-    public String displayCalcArea() {
+    public String getCalcArea() { // returns calcArea which updates as new numbers are added or an answer is calculated
         return calcArea;
     }
 
-    public void calculateAnswer()  // method to perform calculation
-    {
+    public void calculateAnswer() {
         calcAnswer = util.Operation.calculateIt(arg1, mathOp, arg2);
         calcArea = String.valueOf(calcAnswer);
         arg1 = Double.parseDouble(calcArea);
@@ -35,25 +36,28 @@ public class Calculate {
         initialCalcAreaInputState = true;
     }
 
-    public void oneOpHelper() {
+    public void oneOpHelper() { // operation helper to evaluate first arg only after one value math function is applied
         arg2 = 0;
         calculateAnswer();
     }
 
-    public void updateCalcArea(String input) {
-        if (initialCalcAreaInputState) {  // sets text to string on initial key typed
-            calcArea = input;
-            initialCalcAreaInputState = false;
-        } else  {                         // concatenates string to end of text subsequent keys typed
-            calcArea = calcArea + input;
-        }
+    public void saveValueOfMathOp(OPERATOR op) { // method to store operator
+        mathOp = op;
     }
 
+    public void updateCalcArea(String input) { // attempted to move into view (CalculatorUI) but was experiencing issues; this view code is in control
+        if (initialCalcAreaInputState) {
+            calcArea = input;
+            initialCalcAreaInputState = false;
+        } else  {
+            calcArea = input + calcArea;
+        }
+    }
     /**
      * Save values for Calculator.
      */
-    public void saveValueOfArg1() { // method to store 1st value in calculation (arg1)
-        arg1 = Double.parseDouble(calcArea);
+    public void saveValueOfArg1(String currentNumbers) { // stores first
+        arg1 = Double.parseDouble(currentNumbers);
         mathState = Calculate.STATE.SAVE1;
         initialCalcAreaInputState = true;
     }
