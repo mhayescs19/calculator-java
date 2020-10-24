@@ -16,6 +16,11 @@ public class Calculate {
     private double arg1;
     private double arg2;
     private double calcAnswer;
+
+    public String getterCalcArea() {
+        return calcArea;
+    }
+
     private String calcArea;
 
     public void getCalcArea(String currentDisplay) {
@@ -64,4 +69,5 @@ public class Calculate {
             mathState = Calculate.STATE.SAVE2;
         }
     }
+
 }
