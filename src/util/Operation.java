@@ -4,15 +4,16 @@ package util;
 import static java.lang.Math.*;
 
 public class Operation {
-	
+
 	public static enum OPERATOR { NOOP, PLUS, MINUS, DIVIDE, MULTIPLY, LOGy, LOG, POWERy, ACOSIN, ASIN, SQ, SQRT, SQRTy,POSNEG, FRACTION}
 	public static double calculateIt(double arg1, OPERATOR mathOp, double arg2) {
-		
+
 		double calcAnswer;		
 		switch(mathOp)
 	    {
 	        case PLUS:
 	            calcAnswer = arg1 + arg2;
+
 	            break;
 	        case MINUS:
 	            calcAnswer = arg1 - arg2;

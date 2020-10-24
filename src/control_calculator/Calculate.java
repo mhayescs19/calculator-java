@@ -18,6 +18,11 @@ public class Calculate {
     private double arg1;
     private double arg2;
     private double calcAnswer;
+
+    public String getterCalcArea() {
+        return calcArea;
+    }
+
     private String calcArea;
 
     public void setCalcArea(String currentDisplay) { // due to MVC, method grabs value from calculator view (might be not entirely control)
@@ -68,4 +73,5 @@ public class Calculate {
             mathState = Calculate.STATE.SAVE2;
         }
     }
+
 }
