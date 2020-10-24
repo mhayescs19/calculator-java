@@ -140,8 +140,7 @@ public class CalculatorUI extends JFrame {
 		button_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_1.setBackground(Color.decode("#B4B4B4"));
 		button_1.addActionListener(e -> {
-			control.setCalcArea(button_1.getText());
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_1.getText());
 			displayCalcArea();
 		});
 		button_1.setBounds(167, 192 + offset, 62, 50);
@@ -375,7 +374,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_divide.addActionListener(e -> { //
-			control.saveValueOfArg1(calcArea.getText());
+			control.saveValueOfArg1();
 			control.saveValueOfMathOp(OPERATOR.DIVIDE);
 		});
 		button_divide.setOpaque(true);

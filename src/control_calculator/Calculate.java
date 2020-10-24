@@ -61,8 +61,8 @@ public class Calculate {
     /**
      * Save values for Calculator.
      */
-    public void saveValueOfArg1(String currentNumbers) { // stores first
-        arg1 = Double.parseDouble(currentNumbers);
+    public void saveValueOfArg1() { // method to store 1st value in calculation (arg1)
+        arg1 = Double.parseDouble(calcArea);
         mathState = Calculate.STATE.SAVE1;
         initialCalcAreaInputState = true;
     }
