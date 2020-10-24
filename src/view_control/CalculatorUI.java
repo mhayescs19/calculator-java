@@ -94,8 +94,10 @@ public class CalculatorUI extends JFrame {
 		// calculator control
 		String calcAreaDefault = "0.0";
 		calcArea.setText(calcAreaDefault);
+		control.setCalcArea(calcAreaDefault);
 		mathState = STATE.INITIAL;
 		initialCalcAreaInputState = true;
+		control.initialCalcAreaInputState = true;
 		arg1 = 0.0;
 		arg2 = 0.0;
 		calcAnswer = 0.0;
