@@ -57,12 +57,12 @@ public class CalculatorUI extends JFrame {
 		calculateAnswer();
 	}
 	
-	private void updateCalcArea(String string) {
-		if (initialCalcAreaInputState) {  // sets text to string on initial key typed
-			calcArea.setText(string);
+	private void updateCalcArea(String input) {
+		if (control.initialCalcAreaInputState) {  // sets text to string on initial key typed
+			calcArea.setText(input);
 			initialCalcAreaInputState = false;
 	    } else  {                         // concatenates string to end of text subsequent keys typed
-			calcArea.setText(calcArea.getText() + string);
+			calcArea.setText(calcArea.getText() + input);
 	    }
 	}
 	
@@ -102,7 +102,7 @@ public class CalculatorUI extends JFrame {
 	}
 
 	public void displayCalcArea() {
-		String currentNumbers = control.displayCalcArea();
+		String currentNumbers = control.getCalcArea();
 		calcArea.setText(currentNumbers);
 	}
 	/**
@@ -121,6 +121,7 @@ public class CalculatorUI extends JFrame {
 		calcArea.setHorizontalAlignment(SwingConstants.RIGHT);
 		calcArea.setBounds(18, 0, 377, 67);
 		getContentPane().add(calcArea);
+		control.initialCalcAreaInputState = true;
 		
 		JButton button_1 = new JButton("1"); // text displayed on button
 		button_1.addMouseListener(new MouseAdapter() {
@@ -139,8 +140,7 @@ public class CalculatorUI extends JFrame {
 		button_1.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
 		button_1.setBackground(Color.decode("#B4B4B4"));
 		button_1.addActionListener(e -> {
-
-			control.updateCalcArea(calcArea.getText());
+			control.updateCalcArea(button_1.getText());
 			displayCalcArea();
 		});
 		button_1.setBounds(167, 192 + offset, 62, 50);
@@ -157,7 +157,11 @@ public class CalculatorUI extends JFrame {
 				button_2.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_2.addActionListener(e -> updateCalcArea(button_2.getText()));
+		button_2.addActionListener(e -> {
+			control.setCalcArea(button_2.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_2.setOpaque(true);
 		button_2.setForeground(Color.WHITE);
 		button_2.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -177,7 +181,11 @@ public class CalculatorUI extends JFrame {
 				button_3.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_3.addActionListener(e -> updateCalcArea(button_3.getText()));
+		button_3.addActionListener(e -> {
+			control.setCalcArea(button_3.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_3.setOpaque(true);
 		button_3.setForeground(Color.WHITE);
 		button_3.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -197,7 +205,11 @@ public class CalculatorUI extends JFrame {
 				button_4.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_4.addActionListener(e -> updateCalcArea(button_4.getText()));
+		button_4.addActionListener(e -> {
+			control.setCalcArea(button_4.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_4.setOpaque(true);
 		button_4.setForeground(Color.WHITE);
 		button_4.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -217,7 +229,11 @@ public class CalculatorUI extends JFrame {
 				button_5.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_5.addActionListener(e -> updateCalcArea(button_5.getText()));
+		button_5.addActionListener(e -> {
+			control.setCalcArea(button_5.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_5.setOpaque(true);
 		button_5.setForeground(Color.WHITE);
 		button_5.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -237,7 +253,11 @@ public class CalculatorUI extends JFrame {
 				button_6.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_6.addActionListener(e -> updateCalcArea(button_6.getText()));
+		button_6.addActionListener(e -> {
+			control.setCalcArea(button_6.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_6.setOpaque(true);
 		button_6.setForeground(Color.WHITE);
 		button_6.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -257,7 +277,11 @@ public class CalculatorUI extends JFrame {
 				button_7.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_7.addActionListener(e -> updateCalcArea(button_7.getText()));
+		button_7.addActionListener(e -> {
+			control.setCalcArea(button_7.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_7.setOpaque(true);
 		button_7.setForeground(Color.WHITE);
 		button_7.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -277,7 +301,11 @@ public class CalculatorUI extends JFrame {
 				button_8.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_8.addActionListener(e -> updateCalcArea(button_8.getText()));
+		button_8.addActionListener(e -> {
+			control.setCalcArea(button_8.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_8.setOpaque(true);
 		button_8.setForeground(Color.WHITE);
 		button_8.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -297,7 +325,11 @@ public class CalculatorUI extends JFrame {
 				button_9.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_9.addActionListener(e -> updateCalcArea(button_9.getText()));
+		button_9.addActionListener(e -> {
+			control.setCalcArea(button_9.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_9.setOpaque(true);
 		button_9.setForeground(Color.WHITE);
 		button_9.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -317,7 +349,11 @@ public class CalculatorUI extends JFrame {
 				button_0.setBackground(Color.decode("#B4B4B4"));
 			}
 		});
-		button_0.addActionListener(e -> updateCalcArea(button_0.getText()));
+		button_0.addActionListener(e -> {
+			control.setCalcArea(button_0.getText());
+			control.updateCalcArea(calcArea.getText());
+			displayCalcArea();
+		});
 		button_0.setOpaque(true);
 		button_0.setForeground(Color.WHITE);
 		button_0.setFont(new Font("Trebuchet MS", Font.PLAIN, 25));
@@ -338,8 +374,8 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_divide.addActionListener(e -> { //
-			saveValueOfArg1();
-			saveValueOfMathOp(OPERATOR.DIVIDE);
+			control.saveValueOfArg1();
+			control.saveValueOfMathOp(OPERATOR.DIVIDE);
 		});
 		button_divide.setOpaque(true);
 		button_divide.setForeground(Color.WHITE);
@@ -384,7 +420,7 @@ public class CalculatorUI extends JFrame {
 			}
 		});
 		button_decimal.addActionListener(e -> { //
-			updateCalcArea(".");
+			control.updateCalcArea(".");
 		});
 		button_decimal.setOpaque(true);
 		button_decimal.setForeground(Color.WHITE);
