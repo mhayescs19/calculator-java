@@ -1,7 +1,7 @@
 # PEGG HAYES Calculator
 ## How to Launch
 * Run from Intellij Build/Run or in CalculatorUI.java
-## Individual Code Blocks
+## Individual Code Work
 * <a href="https://github.com/mhayescs19/pegg-hayes-calculator-p1-dataminers/blob/master/src/view_control/CalculatorConsole.java">Pegg - Console</a>
 * <a href="https://github.com/mhayescs19/pegg-hayes-calculator-p1-dataminers/blob/master/src/view_control/CalculatorConsole.java">Hayes - Control</a>
 ## Project Updates
