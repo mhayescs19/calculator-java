@@ -7,7 +7,7 @@ public class CalculatorConsole {
     private Operation.OPERATOR mathOp;
    private double arg1; // to be implemented in later
    private double arg2; // to be implemented in later
-   private OPERATOR operator;
+
    private double awnser;
    private Calculate console;
    private String input;
@@ -15,10 +15,11 @@ public class CalculatorConsole {
     {
             console = new Calculate();
     }
-    public void MathOpSetter(OPERATOR op)
+   /* public void MathOpSetter(OPERATOR op)
     {
         this.mathOp = op;
-    }
+    } not needed anymore
+    */
 
     public  void Arg1Setter(double arg1)
     {
@@ -32,15 +33,56 @@ public class CalculatorConsole {
         this.console.updateCalcArea(this.input);
         this.console.saveValueOfArg2();
     }
-    public  void OperatorSetter(OPERATOR op)
-    {
-        this.operator = op;
-    }
+
     public void Evaluate()
     {
             this.console.calculateAnswer();
             System.out.println(this.arg2 + mathOp.toString() +this.arg2+"="+ console.getterCalcArea());
 
     }
+
+    public void ConsoleCalc()
+    {
+        boolean exit = false;
+        System.out.println("entered Console Calc");
+        while (!exit)
+        {
+            System.out.println("enter a number for arg1");
+            Scanner input = new Scanner(System.in);
+            double arg1 = input.nextDouble();
+            System.out.println("enter a number for arg2");
+            input = new Scanner(System.in);
+            double arg2 = input.nextDouble();
+            System.out.println("1 = plus");
+            System.out.println("2 = minus");
+            System.out.println("3 = multiplication");
+            System.out.println("4 = Division");
+            int op = input.nextInt();
+            switch (op)
+            {
+                case 1: this.mathOp = OPERATOR.PLUS; break;
+                case 2: this.mathOp = OPERATOR.MINUS;break;
+                case 3: this.mathOp = OPERATOR.MULTIPLY;break;
+                case 4: this.mathOp = OPERATOR.DIVIDE; break;
+            }
+            Arg1Setter(arg1);
+            Arg2Setter(arg2);
+            Evaluate();
+            System.out.println("would you like to continue using console Y/N");
+            String stringinput;
+            stringinput = input.nextLine();
+            switch (stringinput)
+            {
+                case "y":
+                case "Y":
+                    exit = true; break;
+                default: break;
+            }
+
+
+        }
+
+    }
+
 
 }
