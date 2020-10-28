@@ -37,7 +37,7 @@ public class CalculatorConsole {
     public void Evaluate()
     {
             this.console.calculateAnswer();
-            System.out.println(console.getArg1() + mathOp.toString() +console.getArg1()+"="+ console.getterCalcArea());
+            System.out.println(console.getArg1() + mathOp.toString() +console.getArg2()+"="+ console.getterCalcArea());
 
     }
 
