@@ -57,12 +57,17 @@ public class CalculatorConsole {
             System.out.println("2 = minus");
             System.out.println("3 = multiplication");
             System.out.println("4 = Division");
+            System.out.println("5= SQ");
+            System.out.println("6 = Powery");
             int op = input.nextInt();
             switch (op) {
                 case 1 -> this.mathOp = OPERATOR.PLUS;
                 case 2 -> this.mathOp = OPERATOR.MINUS;
                 case 3 -> this.mathOp = OPERATOR.MULTIPLY;
                 case 4 -> this.mathOp = OPERATOR.DIVIDE;
+                case 5 -> this.mathOp = OPERATOR.SQ;
+                case 6 -> this.mathOp = OPERATOR.POWERy;
+
             }
             Arg1Setter(arg1);
             Arg2Setter(arg2);
