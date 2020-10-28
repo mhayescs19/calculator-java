@@ -5,10 +5,10 @@ import util.Operation.OPERATOR;
 import util.Operation;
 public class CalculatorConsole {
     private Operation.OPERATOR mathOp;
-   private double arg1; // to be implemented in later
-   private double arg2; // to be implemented in later
+   //private double arg1; // to be implemented in later
+  // private double arg2; // to be implemented in later
 
-   private double awnser;
+  // private double awnser;
    private Calculate console;
    private String input;
     public CalculatorConsole()
@@ -37,7 +37,7 @@ public class CalculatorConsole {
     public void Evaluate()
     {
             this.console.calculateAnswer();
-            System.out.println(this.arg2 + mathOp.toString() +this.arg2+"="+ console.getterCalcArea());
+            System.out.println(console.getArg1() + mathOp.toString() +console.getArg1()+"="+ console.getterCalcArea());
 
     }
 
@@ -58,12 +58,11 @@ public class CalculatorConsole {
             System.out.println("3 = multiplication");
             System.out.println("4 = Division");
             int op = input.nextInt();
-            switch (op)
-            {
-                case 1: this.mathOp = OPERATOR.PLUS; break;
-                case 2: this.mathOp = OPERATOR.MINUS;break;
-                case 3: this.mathOp = OPERATOR.MULTIPLY;break;
-                case 4: this.mathOp = OPERATOR.DIVIDE; break;
+            switch (op) {
+                case 1 -> this.mathOp = OPERATOR.PLUS;
+                case 2 -> this.mathOp = OPERATOR.MINUS;
+                case 3 -> this.mathOp = OPERATOR.MULTIPLY;
+                case 4 -> this.mathOp = OPERATOR.DIVIDE;
             }
             Arg1Setter(arg1);
             Arg2Setter(arg2);
@@ -73,9 +72,9 @@ public class CalculatorConsole {
             stringinput = input.nextLine();
             switch (stringinput)
             {
-                case "y":
-                case "Y":
-                    exit = true; break;
+                case "N":
+                case "n":
+                     exit = true; break;
                 default: break;
             }
 

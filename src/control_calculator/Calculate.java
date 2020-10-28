@@ -16,6 +16,15 @@ public class Calculate {
 
     private Operation.OPERATOR mathOp;
     private double arg1;
+
+    public double getArg1() {
+        return arg1;
+    }
+
+    public double getArg2() {
+        return arg2;
+    }
+
     private double arg2;
     private double calcAnswer;
 
