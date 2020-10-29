@@ -675,12 +675,33 @@ public class CalculatorUI extends JFrame {
 		button_fraction.setBackground(Color.decode("#787777"));
 		button_fraction.setBounds(291, 42 + offset, 62, 50);
 		getContentPane().add(button_fraction);
-		
+
+		JButton button_console = new JButton("Console");
+		button_console.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				button_console.setBackground(Color.decode("#878787"));
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				button_console.setBackground(Color.decode("#787777"));
+			}
+		});
+		button_console.addActionListener(e -> {
+			// add activation of console code here
+		});
+		button_console.setOpaque(true);
+		button_console.setForeground(Color.WHITE);
+		button_console.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
+		button_console.setBorder(new MatteBorder(1, 1, 1, 1, Color.BLACK));
+		button_console.setBackground(Color.decode("#787777"));
+		button_console.setBounds(2, 42 + offset, 105, 50);
+		getContentPane().add(button_console);
+
 		JLabel label_title = new JLabel("PEGG, HAYES");
 		label_title.setBounds(6, 6, 134, 16);
 		label_title.setFont(new Font("Trebuchet MS", Font.PLAIN, 12));
 		label_title.setForeground(Color.WHITE);
-
 		getContentPane().add(label_title);
 
 	}
