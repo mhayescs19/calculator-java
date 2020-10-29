@@ -5,15 +5,12 @@ import util.Operation.OPERATOR;
 import util.Operation;
 public class CalculatorConsole {
     private Operation.OPERATOR mathOp;
-   //private double arg1; // to be implemented in later
-  // private double arg2; // to be implemented in later
-
-  // private double awnser;
    private Calculate console;
    private String input;
     public CalculatorConsole()
     {
             console = new Calculate();
+
     }
    /* public void MathOpSetter(OPERATOR op)
     {
@@ -24,20 +21,28 @@ public class CalculatorConsole {
     public  void Arg1Setter(double arg1)
     {
                 input = String.valueOf(arg1);
-                this.console.updateCalcArea(this.input);
+                this.console.setCalcArea(this.input);
                 this.console.saveValueOfArg1();
     }
     public  void Arg2Setter(double arg2)
     {
         input = String.valueOf(arg2);
-        this.console.updateCalcArea(this.input);
+        this.console.setCalcArea(this.input);
         this.console.saveValueOfArg2();
     }
+    public void setMathOp()
+    {
+        console.saveValueOfMathOp(this.mathOp);
+    }
+
 
     public void Evaluate()
     {
+            double arg1 = console.getArg1();
             this.console.calculateAnswer();
-            System.out.println(console.getArg1() + mathOp.toString() +console.getArg2()+"="+ console.getterCalcArea());
+            System.out.println(arg1 + " "+mathOp.toString() +" "+console.getArg2()+"="+console.getterCalcArea());
+
+
 
     }
 
@@ -71,9 +76,11 @@ public class CalculatorConsole {
             }
             Arg1Setter(arg1);
             Arg2Setter(arg2);
+            setMathOp();
             Evaluate();
             System.out.println("would you like to continue using console Y/N");
             String stringinput;
+            input = new Scanner(System.in);
             stringinput = input.nextLine();
             switch (stringinput)
             {

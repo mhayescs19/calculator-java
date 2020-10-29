@@ -3,7 +3,7 @@ package view_control;
 import control_calculator.Calculate;
 import util.Operation.OPERATOR;
 import util.Operation;
-
+import view_control.CalculatorConsole;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.StrokeBorder;
@@ -689,6 +689,8 @@ public class CalculatorUI extends JFrame {
 		});
 		button_console.addActionListener(e -> {
 			// add activation of console code here
+			CalculatorConsole var = new CalculatorConsole();
+			var.ConsoleCalc();
 		});
 		button_console.setOpaque(true);
 		button_console.setForeground(Color.WHITE);
