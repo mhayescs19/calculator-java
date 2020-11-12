@@ -22,12 +22,12 @@ import java.text.AttributedString;
  */
 public class CalculatorUI extends JFrame {
 	private final JLabel calcArea = new JLabel("");
-	private Calculate control = new Calculate();
+	//private Calculate control = new Calculate();
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
 			try {
-				CalculatorUI frame = new CalculatorUI();
-				frame.setVisible(true); // inherited from JFrame "magic method"
+				//CalculatorUI frame = new CalculatorUI();
+				//frame.setVisible(true); // inherited from JFrame "magic method"
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -36,14 +36,14 @@ public class CalculatorUI extends JFrame {
 	/**
 	  Helper method to display current calculation area from control object (of Calculate class)
 	 */
-	public void displayCalcArea() {
+	public void displayCalcArea(Calculate control) {
 		String currentNumbers = control.getCalcArea();
 		calcArea.setText(currentNumbers);
 	}
 	/**
 	 * Create the frame.
 	 */
-	public CalculatorUI() { // constructor for main method, makes the buttons "alive"
+	public CalculatorUI(Calculate control) { // constructor for main method, makes the buttons "alive"
 		// sets up the frame
 		getContentPane().setBackground(Color.decode("#4C4C4C"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -82,7 +82,7 @@ public class CalculatorUI extends JFrame {
 		 */
 		button_1.addActionListener(e -> {
 			control.updateCalcArea(button_1.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_1.setBounds(167, 192 + offset, 62, 50);
 		getContentPane().add(button_1);
@@ -100,7 +100,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_2.addActionListener(e -> {
 			control.updateCalcArea(button_2.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_2.setOpaque(true);
 		button_2.setForeground(Color.WHITE);
@@ -123,7 +123,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_3.addActionListener(e -> {
 			control.updateCalcArea(button_3.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_3.setOpaque(true);
 		button_3.setForeground(Color.WHITE);
@@ -146,7 +146,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_4.addActionListener(e -> {
 			control.updateCalcArea(button_4.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_4.setOpaque(true);
 		button_4.setForeground(Color.WHITE);
@@ -169,7 +169,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_5.addActionListener(e -> {
 			control.updateCalcArea(button_5.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_5.setOpaque(true);
 		button_5.setForeground(Color.WHITE);
@@ -192,7 +192,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_6.addActionListener(e -> {
 			control.updateCalcArea(button_6.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_6.setOpaque(true);
 		button_6.setForeground(Color.WHITE);
@@ -215,7 +215,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_7.addActionListener(e -> {
 			control.updateCalcArea(button_7.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_7.setOpaque(true);
 		button_7.setForeground(Color.WHITE);
@@ -238,7 +238,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_8.addActionListener(e -> {
 			control.updateCalcArea(button_8.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_8.setOpaque(true);
 		button_8.setForeground(Color.WHITE);
@@ -261,7 +261,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_9.addActionListener(e -> {
 			control.updateCalcArea(button_9.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_9.setOpaque(true);
 		button_9.setForeground(Color.WHITE);
@@ -284,7 +284,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_0.addActionListener(e -> {
 			control.updateCalcArea(button_0.getText());
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_0.setOpaque(true);
 		button_0.setForeground(Color.WHITE);
@@ -361,7 +361,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_decimal.addActionListener(e -> { //
 			control.updateCalcArea(".");
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_decimal.setOpaque(true);
 		button_decimal.setForeground(Color.WHITE);
@@ -443,7 +443,7 @@ public class CalculatorUI extends JFrame {
 			control.saveValueOfArg1();
 			control.saveValueOfMathOp(OPERATOR.LOG);
 			control.oneOpHelper();
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_LOG.setOpaque(true);
 		button_LOG.setForeground(Color.WHITE);
@@ -469,7 +469,7 @@ public class CalculatorUI extends JFrame {
 			control.saveValueOfArg1();
 			control.saveValueOfMathOp(OPERATOR.SQ);
 			control.oneOpHelper();
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_square.setOpaque(true);
 		button_square.setForeground(Color.WHITE);
@@ -542,7 +542,7 @@ public class CalculatorUI extends JFrame {
 			control.saveValueOfArg1();
 			control.saveValueOfMathOp(OPERATOR.SQRT);
 			control.oneOpHelper();
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_SQRT.setOpaque(true);
 		button_SQRT.setForeground(Color.WHITE);
@@ -591,7 +591,7 @@ public class CalculatorUI extends JFrame {
 			control.setCalcArea(calcArea.getText());
 			control.saveValueOfArg2();
 			control.calculateAnswer();
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_equals.setOpaque(true);
 		button_equals.setForeground(Color.WHITE);
@@ -614,7 +614,7 @@ public class CalculatorUI extends JFrame {
 		});
 		button_clear.addActionListener(e -> {
 			control.clearCalculator();
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_clear.setOpaque(true);
 		button_clear.setForeground(Color.WHITE);
@@ -640,7 +640,7 @@ public class CalculatorUI extends JFrame {
 			control.saveValueOfArg1();
 			control.saveValueOfMathOp(OPERATOR.POSNEG);
 			control.oneOpHelper();
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_posneg.setOpaque(true);
 		button_posneg.setForeground(Color.WHITE);
@@ -666,7 +666,7 @@ public class CalculatorUI extends JFrame {
 			control.saveValueOfArg1();
 			control.saveValueOfMathOp(OPERATOR.FRACTION);
 			control.oneOpHelper();
-			displayCalcArea();
+			displayCalcArea(control);
 		});
 		button_fraction.setOpaque(true);
 		button_fraction.setForeground(Color.WHITE);

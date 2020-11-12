@@ -10,36 +10,45 @@ public class Calculate {
       Calculate Object Definitions
      */
     public boolean initialCalcAreaInputState;
-    private enum STATE { INITIAL, SAVE1, SAVE2, CALC } // defines the structure of what the STATE enum is
+
+    private enum STATE {INITIAL, SAVE1, SAVE2, CALC} // defines the structure of what the STATE enum is
 
     private STATE mathState;
 
     private Operation.OPERATOR mathOp;
     private double arg1;
+    private double arg2;
+
+    private double calcAnswer;
+    private String calcArea;
+
+    public CalculatorUI view;
+
+    public Calculate() {
+
+        this.view = new CalculatorUI(this);
+        view.setVisible(true);
+
+    }
 
     public double getArg1() {
-        return arg1;
+        return this.arg1;
     }
 
     public double getArg2() {
-        return arg2;
+        return this.arg2;
     }
-
-    private double arg2;
-    private double calcAnswer;
 
     public String getterCalcArea() {
-        return calcArea;
+        return this.calcArea;
     }
 
-    private String calcArea;
-
     public void setCalcArea(String currentDisplay) { // due to MVC, method grabs value from calculator view (might be not entirely control)
-        calcArea = currentDisplay;
+        this.calcArea = currentDisplay;
     }
 
     public String getCalcArea() { // returns calcArea which updates as new numbers are added or an answer is calculated
-        return calcArea;
+        return this.calcArea;
     }
 
     public void calculateAnswer() {
@@ -56,14 +65,14 @@ public class Calculate {
     }
 
     public void saveValueOfMathOp(OPERATOR op) { // method to store operator
-        mathOp = op;
+        this.mathOp = op;
     }
 
     public void updateCalcArea(String input) { // attempted to move into view (CalculatorUI) but was experiencing issues; this view code is in control
         if (initialCalcAreaInputState) {
             calcArea = input;
             initialCalcAreaInputState = false;
-        } else  {
+        } else {
             calcArea = calcArea + input;
         }
     }
@@ -78,6 +87,7 @@ public class Calculate {
         arg2 = 0.0;
         calcAnswer = 0.0;
     }
+
     /**
      * Save values for Calculator.
      */
@@ -94,4 +104,7 @@ public class Calculate {
         }
     }
 
+    public static void main(String[] args) {
+        new Calculate();
+    }
 }
